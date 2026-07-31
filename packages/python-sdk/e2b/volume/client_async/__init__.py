@@ -5,10 +5,10 @@ from typing import Dict, Optional
 
 import httpx
 from httpx import Limits
-from httpx._types import ProxyTypes
 
 from e2b.api import connection_retries, make_async_logging_event_hooks
 from e2b.api.metadata import default_headers
+from e2b.connection_config import ProxyTypes
 from e2b.exceptions import AuthenticationException
 from e2b.volume.client.client import AuthenticatedClient as AsyncVolumeApiClient
 from e2b.volume.connection_config import VolumeConnectionConfig

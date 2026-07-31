@@ -23,6 +23,7 @@ from connectrpc.code import Code
 from connectrpc.errors import ConnectError
 from protobuf import Message
 
+from e2b.connection_config import ProxyTypes
 from e2b.exceptions import InvalidArgumentException
 
 # Mirror the httpx pool tuning in `e2b.api.limits` with pyqwest's equivalents.
@@ -170,7 +171,7 @@ ENVD_RPC_COMPRESSION: _RPCCompression = {
 }
 
 
-def proxy_to_url(proxy: object) -> Optional[str]:
+def proxy_to_url(proxy: Optional[ProxyTypes]) -> Optional[str]:
     """Narrow the ``proxy`` connection option to the proxy URL string pyqwest
     transports take (scheme http, https, socks5, or socks5h, credentials in
     the URL userinfo). ``httpx.URL`` and ``httpx.Proxy`` — which the REST

@@ -1,6 +1,9 @@
+from typing import cast
+
 import httpx
 import pytest
 
+from e2b.connection_config import ProxyTypes
 from e2b.envd import client_async, client_sync
 from e2b.envd.client_shared import proxy_to_url
 from e2b.exceptions import InvalidArgumentException
@@ -64,7 +67,7 @@ def test_proxy_to_url_rejects_httpx_proxy_ssl_context():
 
 def test_proxy_to_url_rejects_unknown_types():
     with pytest.raises(InvalidArgumentException, match="URL-string"):
-        proxy_to_url(object())
+        proxy_to_url(cast(ProxyTypes, object()))
 
 
 def test_sync_transport_is_cached_per_proxy():
